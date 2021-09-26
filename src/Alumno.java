@@ -1,5 +1,6 @@
 import javax.sound.sampled.Line;
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Alumno {
@@ -42,11 +43,11 @@ public class Alumno {
                 NotasAlumnos.add(new ArrayList<>());
                 for (int k = 0; k < 4; k++) {
                     if(k!=3){
-                        nota =  Math.round((Math.random()*10)*100/100);
+                        nota = Math.random()*10;
                         NotasAlumnos.get(j).add(nota);
                         NotaMedia += nota;
                     }else{
-                        NotaMedia = Math.round(((NotaMedia/3)*1000)/1000);
+                        NotaMedia = NotaMedia/3;
                         NotasAlumnos.get(j).add(NotaMedia);
                         NotaMedia = 0;
                     }
@@ -57,10 +58,11 @@ public class Alumno {
             String LineaAMostrar;
             File FileAescribir = new File("ListadoDeNotas");
             BufferedWriter WriteFichero = new BufferedWriter(new FileWriter(FileAescribir));
+            DecimalFormat df = new DecimalFormat("#.00");
             for (int i = 0; i < 10; i++) {
                 LineaAMostrar = NombreAlumnosAleatorio.get(i);
                 for (int j = 0; j < 4; j++) {
-                    LineaAMostrar = LineaAMostrar + " " + NotasAlumnos.get(i).get(j);
+                    LineaAMostrar = LineaAMostrar + " " + df.format(NotasAlumnos.get(i).get(j));
                 }
                 System.out.println(LineaAMostrar);
                 WriteFichero.write(LineaAMostrar + "\n");
