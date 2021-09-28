@@ -6,9 +6,14 @@ import java.util.ArrayList;
 public class Alumno {
 
     //Variables de la clase
-    ArrayList<String> NombreAlumnosAleatorio = new ArrayList<>();
-    ArrayList<String> NombreAlumnosCompleto = new ArrayList<>();
-    ArrayList<ArrayList<Double>> NotasAlumnos = new ArrayList<>();
+    public ArrayList<String> NombreAlumnosAleatorio = new ArrayList<>();
+    public ArrayList<String> NombreAlumnosCompleto = new ArrayList<>();
+    public ArrayList<ArrayList<Double>> NotasAlumnos = new ArrayList<>();
+
+    //Constructores
+    public  Alumno(){
+
+    }
 
     //Method
     public void MostrarNotasAlumnos(){
@@ -59,6 +64,7 @@ public class Alumno {
             File FileAescribir = new File("ListadoDeNotas");
             BufferedWriter WriteFichero = new BufferedWriter(new FileWriter(FileAescribir));
             DecimalFormat df = new DecimalFormat("#.00");
+
             for (int i = 0; i < 10; i++) {
                 LineaAMostrar = NombreAlumnosAleatorio.get(i);
                 for (int j = 0; j < 4; j++) {
@@ -68,10 +74,6 @@ public class Alumno {
                 WriteFichero.write(LineaAMostrar + "\n");
             }
             WriteFichero.close();
-
-
-
-
 
         }catch (Exception e){
             System.out.println("Fallo al entrar al fichero");
